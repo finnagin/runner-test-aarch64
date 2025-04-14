@@ -3,6 +3,7 @@ name: Test windows-aarch64 availability
 
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   build:
