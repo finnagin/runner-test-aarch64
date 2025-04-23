@@ -11,9 +11,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: quansight-labs/setup-python@v5
+        id: py
         with:
-          python-version: "3.x"
+          python-version: |
+            3.11
+            3.12
+            3.13
+          allow-prereleases: true
+          architecture: $arm64
 
-      - name: Success
-        run: echo Yay!
+      - name: Print version and path
+        run: | 
+          echo ${{ steps.py.outputs.python-path }}
+          echo ${{ steps.py.outputs.python-version }}
