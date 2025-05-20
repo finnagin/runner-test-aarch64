@@ -26,7 +26,8 @@ jobs:
             3.12
             3.13
           allow-prereleases: true
-          architecture: arm64
+          architecture: ${{ matrix.os == 'windows' && 'x64' || 'arm64' }}
+
 
       - name: Print version and path
         run: | 
