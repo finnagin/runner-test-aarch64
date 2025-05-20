@@ -7,7 +7,14 @@ on:
 
 jobs:
   build:
-    runs-on: windows-11-arm-latest
+    runs-on: ${{ matrix.os == 'windows-11-arm' && matrix.os || matrix.os + '-latest' }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - windows-11-arm
+          - windows
 
     steps:
       - uses: actions/checkout@v4
