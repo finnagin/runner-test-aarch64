@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os == 'windows-11-arm' && matrix.os || '${matrix.os}-latest' }}
+    runs-on: ${{ matrix.os == 'windows-11-arm' && matrix.os || format( '{0}-latest', matrix.os ) }}
 
     strategy:
       fail-fast: false
