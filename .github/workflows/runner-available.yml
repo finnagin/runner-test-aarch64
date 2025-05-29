@@ -35,6 +35,7 @@ jobs:
         uses: conda-incubator/setup-miniconda@v3 # https://github.com/conda-incubator/setup-miniconda.
         with:
           channels: conda-forge,defaults
+          architecture: ${{ matrix.os == 'windows' && 'x64' || 'arm64' }}
       
       - name: Print version and path
         run: | 
