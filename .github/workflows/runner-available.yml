@@ -31,7 +31,11 @@ jobs:
           allow-prereleases: true
           architecture: ${{ matrix.os == 'windows' && 'x64' || 'arm64' }}
 
-
+      - name: Install miniconda.
+        uses: conda-incubator/setup-miniconda@v3 # https://github.com/conda-incubator/setup-miniconda.
+        with:
+          channels: conda-forge,defaults
+      
       - name: Print version and path
         run: | 
           echo ${{ steps.py.outputs.python-path }}
