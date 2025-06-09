@@ -33,9 +33,9 @@ jobs:
 
       - name: Print Runner OS
         run: | 
-          echo "runner.os:" 
           echo ${{ runner.os }}
           echo ${{ runner.arch }}
+          echo ${{ runner.temp }}
       
       # - name: Install miniconda.
       #   uses: conda-incubator/setup-miniconda@v3 # https://github.com/conda-incubator/setup-miniconda.
