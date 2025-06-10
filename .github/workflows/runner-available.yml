@@ -31,6 +31,16 @@ jobs:
           allow-prereleases: true
           architecture: ${{ matrix.os == 'windows' && 'x64' || 'arm64' }}
 
+      # rust toolchain is not currently installed on windows arm64 images https://github.com/actions/partner-runner-images/issues/77
+      - if: ${{ runner.os == 'Windows' && runner.arch == 'ARM64' }}
+        name: Setup rust
+        id: setup-rust
+        shell: pwsh
+        run: |
+          Invoke-WebRequest https://static.rust-lang.org/rustup/dist/aarch64-pc-windows-msvc/rustup-init.exe -OutFile ${{ runner.temp }}\rustup-init.exe
+          ${{ runner.temp }}\rustup-init.exe -y
+          Add-Content $env:GITHUB_PATH "$env:USERPROFILE\.cargo\bin"
+
       - name: Print Runner OS
         run: | 
           echo ${{ runner.os }}
