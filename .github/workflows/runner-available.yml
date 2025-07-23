@@ -44,8 +44,8 @@ jobs:
       # rust is maybe available now
       - name: Test rust install
         run: |
-          rustup toolchain list
           rustc --version
+          rustup toolchain list
 
       - name: Print Runner OS
         run: | 
