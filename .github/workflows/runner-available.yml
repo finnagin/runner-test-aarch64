@@ -20,6 +20,11 @@ jobs:
           - windows
 
     steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+          # architecture: ${{ matrix.platform.target }}
+      
       - uses: actions/checkout@v4
       - uses: quansight-labs/setup-python@v5
         id: py
