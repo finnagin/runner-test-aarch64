@@ -21,9 +21,14 @@ jobs:
 
     steps:
       - uses: actions/setup-python@v5
+        id: cp3x
         with:
           python-version: 3.x
           # architecture: ${{ matrix.platform.target }}
+      - name: 'Print python version'
+        run: echo '${{ steps.cp3x.outputs.python-version }}'
+      - name: 'Test Python'
+        run: ${{ steps.cp3x.outputs.python-path }} -c 'import platform;print(platform.machine())'
       
       - uses: actions/checkout@v4
       - uses: quansight-labs/setup-python@v5
